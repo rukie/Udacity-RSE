@@ -1,0 +1,114 @@
+Initialize engine version: 5.6.1f1 (2860b30f0b54)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA Quadro M4000M (ID=0x13f9)
+    Vendor:   NVIDIA
+    VRAM:     4061 MB
+    Driver:   23.21.13.8819
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\MS\Udacity\RoverSim\Roversim_x86_64_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\MS\Udacity\RoverSim\Roversim_x86_64_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\MS\Udacity\RoverSim\Roversim_x86_64_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\MS\Udacity\RoverSim\Roversim_x86_64_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\MS\Udacity\RoverSim\Roversim_x86_64_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\MS\Udacity\RoverSim\Roversim_x86_64_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\MS\Udacity\RoverSim\Roversim_x86_64_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading C:\MS\Udacity\RoverSim\Roversim_x86_64_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+Platform assembly: C:\MS\Udacity\RoverSim\Roversim_x86_64_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\MS\Udacity\RoverSim\Roversim_x86_64_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\MS\Udacity\RoverSim\Roversim_x86_64_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\MS\Udacity\RoverSim\Roversim_x86_64_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+- Completed reload, in  0.102 seconds
+Platform assembly: C:\MS\Udacity\RoverSim\Roversim_x86_64_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\MS\Udacity\RoverSim\Roversim_x86_64_Data\Managed\System.dll (this message is harmless)
+Platform assembly: C:\MS\Udacity\RoverSim\Roversim_x86_64_Data\Managed\Mono.Security.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 3840x2400 at 0,-1200
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+[Physics.PhysX] ConvexHullBuilder: convex hull has more than 255 polygons!
+ 
+(Filename: C:/buildslave/physx/build/Source/PhysXCooking/src/convex/ConvexHullBuilder.cpp Line: 1479)
+
+[Physics.PhysX] Gu::ConvexMesh::loadConvexHull: convex hull init failed! Try to use the PxConvexFlag::eINFLATE_CONVEX flag. (see PxToolkit::createConvexMeshSafe)
+ 
+(Filename: C:/buildslave/physx/build/Source/PhysXCooking/src/convex/ConvexMeshBuilder.cpp Line: 253)
+
+Failed to create Convex Mesh from source mesh "rock_2". Source mesh is likely have too many smooth surface regions. Please reduce the surface smoothness of the source mesh. Alternatively turn on Inflate Mesh and increase the Skin Width sufficiently for this mesh.
+ 
+(Filename:  Line: 54)
+
+UnloadTime: 0.828034 ms
+switching camera
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 3.259655 ms
+
+Unloading 237 unused Assets to reduce memory usage. Loaded Objects now: 2586.
+Total: 1.785957 ms (FindLiveObjects: 0.176707 ms CreateObjectMapping: 0.061545 ms MarkObjects: 1.081769 ms  DeleteObjects: 0.464802 ms)
+
+switching camera
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.815197 ms
+
+Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 2586.
+Total: 1.324553 ms (FindLiveObjects: 0.115539 ms CreateObjectMapping: 0.030206 ms MarkObjects: 0.905439 ms  DeleteObjects: 0.272990 ms)
+
+switching camera
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.758182 ms
+
+Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 2589.
+Total: 1.655314 ms (FindLiveObjects: 0.189923 ms CreateObjectMapping: 0.029073 ms MarkObjects: 0.939798 ms  DeleteObjects: 0.496518 ms)
+
+switching camera
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.820483 ms
+
+Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 2589.
+Total: 1.658335 ms (FindLiveObjects: 0.150277 ms CreateObjectMapping: 0.030206 ms MarkObjects: 1.046276 ms  DeleteObjects: 0.431197 ms)
+
+switching camera
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Deleting any previous IMG folder and CSV file..
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Starting to record
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Stopping record
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Writing to disk
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Clearing tracks on RearLeft
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Clearing tracks on RearRight
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+bad pickup count: 0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
