@@ -8,10 +8,21 @@ def decision_step(Rover):
     # Implement conditionals to decide what to do given perception data
     # Here you're all set up with some basic functionality but you'll need to
     # improve on this decision tree to do a good job of navigating autonomously!
-
+    
+    if len(Rover.nav_angles) > 500:
+        Rover.max_vel = 4
+    elif len(Rover.nav_angles) > 200:
+        Rover.max_vel = 2
+    else:
+        Rover.max_vel = 1
+        
     # Example:
     # Check if we have vision data to make decisions with
     if Rover.nav_angles is not None:
+        # Check if we're stuck on a rock
+        if Rover.vel <= 0.1 and Rover.mode != 'stop':
+            Rover.mode == 'stuck'
+            
         # Check for Rover.mode status
         if Rover.mode == 'forward': 
             # Check the extent of navigable terrain
@@ -59,7 +70,28 @@ def decision_step(Rover):
                     Rover.brake = 0
                     # Set steer to mean angle
                     Rover.steer = np.clip(np.mean(Rover.nav_angles * 180/np.pi), -15, 15)
+                    #Rover.steer = np.int(Rover.steer - 0.4*(Rover.steer-(np.max(-15,np.min(Rover.nav_angles*180/np.pi)))))
                     Rover.mode = 'forward'
+        # If we're stuck randomly spin
+        elif Rover.mode == 'stuck':
+            Rover.count = Rover.count + 1
+            Rover.throttle = 0
+            # Release the brake to allow turning
+            Rover.brake = Rober.brake_set
+            Rover.steer = 0
+            # Turn range is +/- 15 degrees, when stopped the next line will induce 4-wheel turning
+            rand_dir = random.choice([1, 2])
+            #if rand_dir == 1:
+            #    Rover.steer = -15 # Could be more clever here about which way to turn
+            #else:
+            Rover.steer = 15
+            # If we're stopped but see sufficient navigable terrain in front then go!
+            if Rover.count >= 45:
+                if len(Rover.nav_angles) >= 4*Rover.go_forward:
+                    Rover.throttle = Rover.throttle_set
+                    Rover.mode = 'forward'
+            
+            
     # Just to make the rover do something 
     # even if no modifications have been made to the code
     else:
