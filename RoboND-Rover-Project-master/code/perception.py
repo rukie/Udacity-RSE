@@ -1,5 +1,6 @@
 import numpy as np
 import cv2
+from itertools import repeat
 
 # Identify pixels above the threshold
 # Threshold of RGB > 160 does a nice job of identifying ground pixels only
@@ -134,7 +135,6 @@ def perspect_transform(img, src, dst):
     # Return the results
     return warped, mask
 
-
 # Apply the above functions in succession and update the Rover state accordingly
 def perception_step(Rover):
     # Perform perception steps to update Rover()
@@ -222,11 +222,14 @@ def perception_step(Rover):
     
     # If we find a rock, send that info to the robot and use 
     # Send available distances and angles to rover
-    if thresh_rock.any() and 1==2: # Force this not to run for now
+    # Only go towards the rock if we have at least x pixels
+    if sum(thresh_rock).any() > 3 and 1==1: # Force this not to run for now
         dist_rock, angles_rock = to_polar_coords(rocksxpix, rocksypix)
         Rover.nav_dists = dist_rock
         Rover.nav_angles = angles_rock
+        Rover.get_rock = True
     else:
+        Rover.get_rock = False
         Rover.nav_dists = dist
         Rover.nav_angles = angles
     
