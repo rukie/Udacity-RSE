@@ -135,6 +135,12 @@ def perspect_transform(img, src, dst):
     # Return the results
     return warped, mask
 
+def distance_to_rock(Rover):
+    if len(Rover.rock_dists):
+        return np.min(Rover.rock_dists)
+    else:
+        return 1e9
+
 # Apply the above functions in succession and update the Rover state accordingly
 def perception_step(Rover):
     # Perform perception steps to update Rover()
@@ -219,18 +225,21 @@ def perception_step(Rover):
         # Rover.nav_angles = rover_centric_angles
     # Using rover central pixel coords, find their radial distance and angular position
     dist, angles = to_polar_coords(xpix, ypix)
-    
     # If we find a rock, send that info to the robot and use 
     # Send available distances and angles to rover
     # Only go towards the rock if we have at least x pixels
-    if sum(thresh_rock).any() > 3 and 1==1: # Force this not to run for now
+    
+    if sum(thresh_rock).any() >= 1 and 1==2: # Force this not to run for now
         dist_rock, angles_rock = to_polar_coords(rocksxpix, rocksypix)
+        Rover.rock_dists = dist_rock
         Rover.nav_dists = dist_rock
         Rover.nav_angles = angles_rock
         Rover.get_rock = True
     else:
         Rover.get_rock = False
         Rover.nav_dists = dist
-        Rover.nav_angles = angles
-    
+        #if np.average(Rover.nav_angles) < 5*(np.pi/180):
+        Rover.nav_angles = angles #- 5*(np.pi/180)
+        #else:
+        #    Rover.nav_angles = angles
     return Rover

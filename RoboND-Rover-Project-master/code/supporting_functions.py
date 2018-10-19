@@ -59,6 +59,8 @@ def update_rover(Rover, data):
       imgString = data["image"]
       image = Image.open(BytesIO(base64.b64decode(imgString)))
       Rover.img = np.asarray(image)
+      print('Rover yaw var = ', Rover.yaw_var)
+      print('Rover movement = ', np.linalg.norm(np.array(Rover.last_pos) - np.array(Rover.pos)))
 
       # Return updated Rover and separate image for optional saving
       return Rover, image
