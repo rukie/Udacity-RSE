@@ -22,14 +22,14 @@ def decision_step(Rover):
         
     narrow_nav = (Rover.nav_angles[:] < 5) & (Rover.nav_angles[:] > -5)
     num_narrow_nav = len(narrow_nav)
-    if num_narrow_nav < 100:
-        Rover.nav_angles = Rover.nav_angles + 10*(np.pi/180)
+    if num_narrow_nav < 300 and Rover.get_rock != True: # Previously 100
+        Rover.nav_angles = Rover.nav_angles - 10*(np.pi/180)
     
     Rover.yaw_average = np.insert(Rover.yaw_average[0:-1], 0, Rover.yaw)
     Rover.yaw_var = np.var(Rover.yaw_average)
     
     # Determine if the rover is stuck.        
-    if (Rover.total_time - Rover.last_time) > 5 and Rover.mode != 'stop': # Check every x seconds
+    if (Rover.total_time - Rover.last_time) > 5 and Rover.mode == 'forward': # Check every x seconds
         # Check if the machine position has changed by more than mag(x,y) over the given number of seconds
         if np.linalg.norm(np.array(Rover.last_pos) - np.array(Rover.pos)) <= 0.075:
             Rover.mode = 'stuck'
@@ -42,7 +42,6 @@ def decision_step(Rover):
     if Rover.near_sample == True and np.min(Rover.nav_dists) > 50 and Rover.get_rock == True:
         Rover.max_vel = 0.5
     elif Rover.near_sample == True and np.min(Rover.nav_dists) < 50:
-        Rover.mode = 'stop'
         Rover.send_pickup = True
         Rover.get_rock == False
         
@@ -74,6 +73,15 @@ def decision_step(Rover):
                     Rover.brake = Rover.brake_set
                     Rover.steer = 0
                     Rover.mode = 'stop'
+            else:
+                # Just make sure we keep moving. Likely we saw a rock and don't have many visible pixels.
+                if Rover.vel < Rover.max_vel:
+                    # Set throttle value to throttle setting
+                    Rover.throttle = Rover.throttle_set
+                else: # Else coast
+                    Rover.throttle = 0
+                    Rover.brake = 0
+                Rover.steer = np.clip(np.mean(Rover.nav_angles * 180/np.pi), -30, 30)
 
         # If we're already in "stop" mode then make different decisions
         elif Rover.mode == 'stop':
@@ -112,15 +120,18 @@ def decision_step(Rover):
                 # Release the brake to allow turning
                 Rover.brake = 0
                 # Turn range is +/- 15 degrees, when stopped the next line will induce 4-wheel turning
-                #rand_dir = random.choice([1, 2])
-                #if rand_dir == 1:
-                Rover.steer = -15 # Could be more clever here about which way to turn
-                #else:
-                #    Rover.steer = 15
+                if Rover.rand_dir == 1:
+                    Rover.steer = -15 # Could be more clever here about which way to turn
+                else:
+                    Rover.steer = 15
                 # If we're stopped but see sufficient navigable terrain in front then go!
                 if Rover.count >= 150:
                     Rover.throttle = Rover.throttle_set
                     Rover.mode = 'forward'
+                    Rover.rand_dir = random.choice([1, 2]) # Pick a new random direction
+                    Rover.count = 0 # Reset the stuck counter
+                    Rover.yaw_average = np.array([0, 1, 2, 3, 4])
+                    Rover.last_pos = [0, 0]
             Rover.count = Rover.count + 1
         #else:
         #    Rover.mode = 'forward'

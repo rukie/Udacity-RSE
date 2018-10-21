@@ -59,7 +59,7 @@ class RoverState():
         # of navigable terrain pixels.  This is a very crude form of knowing
         # when you can keep going and when you should stop.  Feel free to
         # get creative in adding new fields or modifying these!
-        self.stop_forward = 50 # Threshold to initiate stopping
+        self.stop_forward = 150 # Threshold to initiate stopping
         self.go_forward = 600 # Threshold to go forward again
         self.max_vel = 2 # Maximum velocity (meters/second)
         self.get_rock = 'false'
@@ -86,6 +86,7 @@ class RoverState():
         self.last_pos = [0, 0] # Previous timestep position
         self.last_time = 0 # 
         self.rock_dists = None # Distances to detected rocks
+        self.rand_dir = 1 # Random direction of left or right
 # Initialize our rover 
 Rover = RoverState()
 
