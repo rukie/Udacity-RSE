@@ -51,7 +51,8 @@ def decision_step(Rover):
         
         
         # Check for Rover.mode status
-        if Rover.mode == 'forward': 
+        if Rover.mode == 'forward':
+            Rover.brake = 0
             # Check the extent of navigable terrain
             if len(Rover.nav_angles) >= Rover.stop_forward:  
                 # If mode is forward, navigable terrain looks good 
@@ -61,7 +62,6 @@ def decision_step(Rover):
                     Rover.throttle = Rover.throttle_set
                 else: # Else coast
                     Rover.throttle = 0
-                    Rover.brake = 0
                 # Set steering to average angle clipped to the range +/- 15
                 #Rover.steer = np.clip(np.mean(Rover.nav_angles * 180/np.pi), -15, 15)
                 Rover.steer = np.clip(np.mean(Rover.nav_angles * 180/np.pi), -30, 30)
@@ -78,6 +78,7 @@ def decision_step(Rover):
                 if Rover.vel < Rover.max_vel:
                     # Set throttle value to throttle setting
                     Rover.throttle = Rover.throttle_set
+                    Rover.brake = 0
                 else: # Else coast
                     Rover.throttle = 0
                     Rover.brake = 0
