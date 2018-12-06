@@ -1,0 +1,36 @@
+Change Log:
+
+V2.0.0
+
+1) Software updated
+2) Changed default ROS editor to nano
+3) Disable screen saver lock
+4) Ran apt-get clean
+5) Cleared the bash_history
+6) Build a custom keyboard selector ran only on VM first launch (This can be reset with `udacity_reset` command)
+7) Removed crash files that caused annoying pop ups
+8) Put a temp working Udacity themed background (Better one to come!)
+9) Aligned rosdep packages with classroom experience
+
+V2.0.1
+1) More updates
+2) Added spanish as keyboard choice
+3) Changed background
+4) Created backup snapshot
+
+V2.1.0
+1) More basic updates
+2) Fixed UK keyboard issue
+3) Added moveit for kinetic via `apt-get install ros-kinetic-moveit`
+4) Checksum feature added
+5) Installed rosbash per student request
+6) Installed Conda and the RoboND Environment
+7) Install ffmpeg
+8) Linked jupyter notebook to firefox
+9) Interactive terminal sourcing
+10) Install mesa-utils
+11) Change crtl-c and crtl-cv key mappings
+12) Block automatic updates to maintain VM integrity
+13) Additional changes for P3 and P4 support
+14) Chrome browser added
+15) PCL installed
