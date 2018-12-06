@@ -1,0 +1,15 @@
+"Project*2*Robotic*Arm*Pick*and*Place/Robotic*VM/"
+"Project*2*Robotic*Arm*Pick*and*Place/Robotic*VM*V2.1.0/"
+"Project 2 Robotic Arm Pick and Place\Robotic VM"
+"Project 2 Robotic Arm Pick and Place\Robotic VM V2.1.0"
+*.ova
+*.vmdk
+*.vmem
+*.lck
+*.log
+*.vmx
+*.vmsd
+*.vmxf
+*vmware*
+nvram
+*.pyc
