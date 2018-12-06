@@ -144,7 +144,7 @@ def pcl_callback(pcl_msg):
     #
     ec.set_ClusterTolerance(0.01)
     ec.set_MinClusterSize(200)
-    ec.set_MaxClusterSize(3000)
+    ec.set_MaxClusterSize(8000)
     # Search the k-d tree for clusters
     ec.set_SearchMethod(tree)
     # Extract indices for each of the discovered clusters
@@ -241,7 +241,7 @@ def pr2_mover(object_list, ros_cloud_table):
 
     # TODO: Initialize variables
     TEST_SCENE_NUM = std_msgs.msg.Int32()
-    TEST_SCENE_NUM.data = 2
+    TEST_SCENE_NUM.data = 3
     OBJECT_NAME = std_msgs.msg.String()
     OBJECT_GROUP = std_msgs.msg.String()
     PICK_POSE = geometry_msgs.msg.Pose()
@@ -345,7 +345,7 @@ if __name__ == '__main__':
     pr2_3d_map_points_pub = rospy.Publisher("/pr2/3D_map/points", PointCloud2, queue_size=1)
 
     # TODO: Load Model From disk
-    model = pickle.load(open('model_2.sav', 'rb'))
+    model = pickle.load(open('model_3.sav', 'rb'))
     clf = model['classifier']
     encoder = LabelEncoder()
     encoder.classes_ = model['classes']
